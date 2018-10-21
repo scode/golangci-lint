@@ -358,9 +358,7 @@ We don't recommend vendoring `golangci-lint` in your repo: you will get troubles
 
 **Does I need to run `go install`?**
 
-No, you don't need to do it anymore. We will run `go install -i` and `go test -i`
-for analyzed packages ourselves. We will run them only
-if option `govet.use-installed-packages` is `true`.
+No, you don't need to do it anymore.
 
 **`golangci-lint` doesn't work**
 
@@ -368,7 +366,12 @@ if option `govet.use-installed-packages` is `true`.
 2. Run it with `-v` option and check the output.
 3. If it doesn't help create a [GitHub issue](https://github.com/golangci/golangci-lint/issues/new) with the output from the error and #2 above.
 
+**Why running with `--fast` is slow on the first run?**
+Because the first run caches type information. All subsequent runs will be fast.
+Usually this options is used during development on local machine and compilation was already performed.
+
 # Thanks
+
 Thanks to [alecthomas/gometalinter](https://github.com/alecthomas/gometalinter) for inspiration and amazing work.
 Thanks to [bradleyfalzon/revgrep](https://github.com/bradleyfalzon/revgrep) for cool diff tool.
 
